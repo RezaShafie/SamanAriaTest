@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Saman.Domain.Interfaces;
 using Saman.Infra.Data;
+using Saman.Infra.Repositories;
+using System.Reflection;
 
 namespace SamanAriaTest
 {
@@ -13,8 +16,13 @@ namespace SamanAriaTest
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddDbContext<AppDbContext>(options=>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("Connection String Key Goes here")));
+            builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("SamanAriaDb")));
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            builder.Services.AddScoped<AppDbContext>();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
 
             var app = builder.Build();
 
