@@ -1,7 +1,6 @@
-﻿using Saman.Domain.Interfaces;
-using Saman.Domain.Models;
+﻿using Saman.Domain.Entities;
 
-namespace Saman.Infra.Repositories;
+namespace Saman.Domain.Interfaces;
 
 public interface IUnitOfWork : IDisposable
 {

@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SamanAriaTest.Models;
 using System.Diagnostics;
 
-namespace SamanAriaTest.Controllers
+namespace Saman.Presentation.Controllers
 {
     public class HomeController : Controller
     {

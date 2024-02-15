@@ -1,7 +1,6 @@
-﻿using Saman.Domain.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Saman.Domain.Models;
+namespace Saman.Domain.Entities;
 
 public record OrderDetail : IEntity
 {

@@ -1,4 +1,4 @@
-namespace SamanAriaTest.Models
+namespace Saman.Presentation.Models
 {
     public class ErrorViewModel
     {

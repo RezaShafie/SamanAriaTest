@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Saman.Domain.Models;
+using Saman.Domain.Entities;
 
 namespace Saman.Infra.Data;
 

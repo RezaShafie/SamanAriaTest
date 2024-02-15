@@ -1,6 +1,4 @@
-﻿using Saman.Domain.Entities;
-
-namespace Saman.Domain.Models;
+﻿namespace Saman.Domain.Entities;
 
 public record Order : IEntity
 {
