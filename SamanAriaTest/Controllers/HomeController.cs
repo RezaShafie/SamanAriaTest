@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Saman.Presentation.Models;
 using System.Diagnostics;
 
 namespace Saman.Presentation.Controllers
