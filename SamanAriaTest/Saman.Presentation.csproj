@@ -8,10 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Saman.Infra\Saman.Infra.csproj" />
+    <ProjectReference Include="..\Saman.Application\Saman.Application.csproj" />
+    <ProjectReference Include="..\Saman.Domain\Saman.Domain.csproj" />
   </ItemGroup>
 
 </Project>
