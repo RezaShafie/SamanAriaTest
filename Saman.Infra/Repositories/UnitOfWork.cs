@@ -1,30 +1,35 @@
-﻿using Saman.Domain.Interfaces;
-using Saman.Domain.Models;
+﻿using Saman.Domain.Entities;
+using Saman.Domain.Interfaces;
+using Saman.Infra.Data;
 
 namespace Saman.Infra.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {
+    private readonly AppDbContext _context;
     public IGenericRepository<User> UsersRepo { get; private set; }
 
     public IGenericRepository<Role> RolesRepo { get; private set; }
 
     public IGenericRepository<UserRole> UserRolesRepo { get; private set; }
 
-    public UnitOfWork(IGenericRepository<User> usersRepo, IGenericRepository<Role> rolesRepo, IGenericRepository<UserRole> userRolesRepo)
+    public UnitOfWork(IGenericRepository<User> usersRepo, IGenericRepository<Role> rolesRepo, IGenericRepository<UserRole> userRolesRepo, AppDbContext context)
     {
-        UsersRepo = usersRepo;
-        RolesRepo = rolesRepo;
-        UserRolesRepo = userRolesRepo;
+
+        _context = context;
+
+        UsersRepo = new GenericRepository<User>(_context);
+        RolesRepo = new GenericRepository<Role>(_context);
+        UserRolesRepo = new GenericRepository<UserRole>(_context);
     }
 
-    public Task CompleteAsync()
+    public async Task CompleteAsync()
     {
-        throw new NotImplementedException();
+        await _context.SaveChangesAsync();
     }
 
     public void Dispose()
     {
-        throw new NotImplementedException();
+        _context.Dispose();
     }
 }
