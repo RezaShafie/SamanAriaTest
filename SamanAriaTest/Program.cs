@@ -5,6 +5,7 @@ using Saman.Infra.Data;
 using Saman.Infra.Repositories;
 using System.Reflection;
 
+
 namespace SamanAriaTest
 {
     public class Program
@@ -23,6 +24,7 @@ namespace SamanAriaTest
             builder.Services.AddScoped<AppDbContext>();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+            builder.Services.AddMediatR(m => m.RegisterServicesFromAssembly(Saman.Application.AssemblyRefrence.Assembly));
 
             var app = builder.Build();
 
