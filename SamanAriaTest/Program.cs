@@ -1,5 +1,9 @@
+using FluentAssertions.Common;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Saman.Application.Validators;
 using Saman.Domain.Interfaces;
 using Saman.Infra.Data;
 using Saman.Infra.Repositories;
@@ -23,6 +27,10 @@ namespace SamanAriaTest
 
             builder.Services.AddScoped<AppDbContext>();
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
+
 
             builder.Services.AddMediatR(m => m.RegisterServicesFromAssembly(Saman.Application.AssemblyRefrence.Assembly));
 
